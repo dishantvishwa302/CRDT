@@ -1,20 +1,9 @@
-// display.h
-// Simple terminal UI helpers with color formatting.
-// No dependencies other than iostream/vector/string.
-
-#ifndef DISPLAY_H
-#define DISPLAY_H
+#ifndef SYNCTEXT_DISPLAY_H
+#define SYNCTEXT_DISPLAY_H
 
 #include <string>
 #include <vector>
-#include <mutex>
-#include <iostream>
-#include <chrono>
-#include <ctime>
 
-using namespace std;
-
-// --- Line status indicators for color display ---
 enum LineStatus {
     LINE_NORMAL,
     LINE_MODIFIED,
@@ -22,14 +11,11 @@ enum LineStatus {
     LINE_DELETED
 };
 
-// --- Forward declarations ---
-void display_init();
 void clearScreen();
-void printColoredLine(int lineNo, const string &text, LineStatus status);
-void showDocument(const vector<string> &doc, const string &title, const vector<LineStatus> &statuses = {});
-void showSummary(const vector<string> &lines);
-void safePrintLn(const string &line);
+void showDocument(const std::vector<std::string> &doc,
+                  const std::string &title,
+                  const std::vector<LineStatus> &statuses = {});
+void showSummary(const std::vector<std::string> &lines);
 void restoreCursor();
 
-
-#endif // DISPLAY_H
+#endif
